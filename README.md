@@ -3,4 +3,4 @@
 This is project has two variants:
 
 ### Server
-    This variant comprises of a python file
+This variant comprises of a python file
