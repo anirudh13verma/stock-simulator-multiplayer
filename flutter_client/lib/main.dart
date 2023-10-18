@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_client/ClientPage.dart';
 import 'package:flutter_client/StartPage.dart';
 
 void main() {
