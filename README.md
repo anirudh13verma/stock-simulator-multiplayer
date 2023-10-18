@@ -1,4 +1,4 @@
-# Multiplayer Stock Simulator Game
+# **Multiplayer Stock Simulator Game**
 
 > Warning: This software is Licensed to [Anirudh Verma](https://github.com/anirudh13verma) under [CC-BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en). Use it appropriately
 
@@ -51,17 +51,17 @@ To use the simulator, run the appropriate app you downloaded/installed on your d
 
 Enter the Server's IP in the Text Field and hit connect!
 
-## Licensing
+## **Licensing**
 
 Multiplayer Stock Simulator Game © 2023 by [Anirudh Verma](https://github.com/anirudh13verma) is licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
 
-#### Do's
+### Do's
 User can:
 * Use the software for **non-commercial** purposes only
 * Showcase the software by respectfully **giving attributes** to the original creator (here [Anirudh Verma](https://github.com/anirudh13verma))
 * Modify the code but must **fork it**, give **same licensing as original** and give **attributes** to the original creator
 
-#### Dont's
+### Dont's
 User can't:
 * Use the software commercially
 * Showcase without giving attributes to the original creator
