@@ -6,4 +6,5 @@
 
 This is a Multiplayer Stock Simulator Game built using Flutter and Python
 | Flutter | Client |
+|---------|--------|
 | Python | Server |
