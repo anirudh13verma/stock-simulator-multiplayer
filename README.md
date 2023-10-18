@@ -1,6 +1,6 @@
 # Multiplayer Stock Simulator Game
 
-> Warning: This game is Licensed under CC-BY-NC-SA.To use it appropriately
+> Warning: This game is Licensed under CC-BY-NC-SA. Use it appropriately
 
 > Read Licensing Information [here]()
 
