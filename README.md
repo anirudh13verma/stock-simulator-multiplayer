@@ -1,6 +1,7 @@
 # Multiplayer Stock Simulator Game
 
 > Warning: This game is Licensed under CC-BY-NC-SA.To use it appropriately
+
 > Read Licensing Information [here]()
 
 This is a Multiplayer Stock Simulator Game built using Flutter and Python. It aims to provide sole control to the host having following salient features:
@@ -12,6 +13,7 @@ This is a Multiplayer Stock Simulator Game built using Flutter and Python. It ai
 ## Installation Guide
 
 First we need to ensure that the libraries required by the server are already installed.
+
 Run the following code to install them (ensure that you're connected to internet)
 ```bash
 pip install requests socket json threading 
