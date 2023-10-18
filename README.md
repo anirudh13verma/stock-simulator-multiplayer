@@ -12,5 +12,6 @@ This is a Multiplayer Stock Simulator Game built using Flutter and Python. It ai
 ## Installation Guide
 
 First we need to ensure that the libraries required by the server are already installed
-
-bash```pip install requests socket json threading ```
+```bash
+pip install requests socket json threading 
+```
