@@ -8,6 +8,8 @@ This is a Multiplayer Stock Simulator Game built using Flutter and Python. It ai
 * **Increase or decrease stock prices** at any instant of any stock of your choice
 * Being a **multiplayer game**, it relies on the players to be on the same local network as the host/server
 
-    | Flutter | Client |
-    |---------|--------|
-    | Python | Server |
+
+## Installation Guide
+
+First we need to ensure that the libraries required by the server are already installed
+bash`pip install requests socket json threading `
