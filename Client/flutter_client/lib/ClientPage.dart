@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 
+import 'package:flutter_client/StartPage.dart';
+import 'package:flutter_client/utils.dart';
+
 class MyClient extends StatefulWidget {
   final String ip;
 
@@ -68,27 +71,41 @@ class _MyClientState extends State<MyClient> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    f(int fs, Color clr, FontWeight fw) {
+      return SafeGoogleFont('Raleway',
+          fontSize: fs / 768 * height, fontWeight: fw, color: clr);
+    }
+
     serverAddress = widget.ip;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Socket Client App'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('Received Data:'),
-            Text(
-              receivedData,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            TextButton(
-                onPressed: () {
-                  socket?.close();
-                  Navigator.pop(context);
-                },
-                child: Text('Exit'))
-          ],
+      body: Container(
+        width: width,
+        height: height,
+        color: bg,
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'Stock Market Simulator:',
+                style: f(42, fg, FontWeight.w800),
+              ),
+              Text(
+                receivedData,
+                style: f(26, fg, FontWeight.normal),
+              ),
+              TextButton(
+                  onPressed: () {
+                    socket?.close();
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'Exit',
+                    style: f(34, fg, FontWeight.w600),
+                  ))
+            ],
+          ),
         ),
       ),
     );

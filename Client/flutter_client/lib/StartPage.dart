@@ -19,6 +19,11 @@ class _StartPageState extends State<StartPage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    f(int fs,Color clr,FontWeight fw){
+      return SafeGoogleFont('Raleway',
+        fontSize: fs / 768 * height, fontWeight: fw, color: clr);
+    }
+
     return Container(
       width: width,
       height: height,
@@ -30,12 +35,7 @@ class _StartPageState extends State<StartPage> {
             children: [
               Text(
                 'Stock Market Simulator',
-                style: SafeGoogleFont(
-                  'Raleway',
-                  fontSize: 46 / 768 * height,
-                  fontWeight: FontWeight.w800,
-                  color: fg,
-                ),
+                style: f(42,fg,FontWeight.w800)
               ),
               Padding(
                 padding: EdgeInsets.only(top: height * 1 / 5),
@@ -52,15 +52,7 @@ class _StartPageState extends State<StartPage> {
                     padding: EdgeInsets.all(height / 20),
                     child: Column(
                       children: [
-                        Text(
-                          'Server Details',
-                          style: SafeGoogleFont(
-                            'Raleway',
-                            fontSize: 38 / 768 * height,
-                            fontWeight: FontWeight.w800,
-                            color: bg,
-                          ),
-                        ),
+                        Text('Server Details', style: f(34,bg,FontWeight.w600)),
                         Padding(
                           padding: EdgeInsets.all(height / 25),
                           child: Center(
