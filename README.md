@@ -1,6 +1,6 @@
 # Multiplayer Stock Simulator Game
 
-> Warning: This game is Licensed under CC-BY-NC-SA. Use it appropriately
+> Warning: This software is Licensed to [Anirudh Verma](https://github.com/anirudh13verma) under [CC-BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en). Use it appropriately
 
 > Read Licensing Information [here]()
 
@@ -24,7 +24,7 @@ pip install requests
 
 ## Starting Server
 
-To start the game, first you need to start the server. In order to do that, find the server.py in the extracted zip location and run following command or just double-click the file:
+To use the simulator, first you need to start the server. In order to do that, find the server.py in the extracted zip location and run following command or just double-click the file:
 ```bash
 python3 server.py
 ```
@@ -42,4 +42,27 @@ The Server's IP: 192.168.29.144
 Server is listening for clients...
 Enter '+' to increase stock price, '-' to decrease stock price, or 'exit' to stop:
 ```
+Here, you can see the Server's IP which will be used later to connect to the server
+
 For further guide on how to adjust stock prices, Read [Server Guide]()
+
+## Using the simulator
+To use the simulator, run the appropriate app you downloaded/installed on your device. The app has cross-platform support
+
+Enter the Server's IP in the Text Field and hit connect!
+
+## Licensing
+
+Multiplayer Stock Simulator Game © 2023 by [Anirudh Verma](https://github.com/anirudh13verma) is licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
+
+#### Do's
+User can:
+* Use the software for **non-commercial** purposes only
+* Showcase the software by respectfully **giving attributes** to the original creator (here [Anirudh Verma](https://github.com/anirudh13verma))
+* Modify the code but must **fork it**, give **same licensing as original** and give **attributes** to the original creator
+
+#### Dont's
+User can't:
+* Use the software commercially
+* Showcase without giving attributes to the original creator
+* Modify the code without having the same licensing, attributes to original creator
