@@ -2,7 +2,7 @@
 
 > Warning: This software is Licensed to [Anirudh Verma](https://github.com/anirudh13verma) under [CC-BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en). Use it appropriately
 
-> Read Licensing Information [here]()
+> Read Licensing Information [here](https://github.com/anirudh13verma/stock-simulator-multiplayer/blob/main/LICENSE)
 
 This is a Multiplayer Stock Simulator Game built using Flutter and Python. It aims to provide sole control to the host having following salient features:
 * Add stocks as per your requirement with **user-feeded stock names**
@@ -54,6 +54,7 @@ Enter the Server's IP in the Text Field and hit connect!
 ## **Licensing**
 
 Multiplayer Stock Simulator Game © 2023 by [Anirudh Verma](https://github.com/anirudh13verma) is licensed under [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
+Read License Information [here](https://github.com/anirudh13verma/stock-simulator-multiplayer/blob/main/LICENSE)
 
 ### Do's
 User can:
