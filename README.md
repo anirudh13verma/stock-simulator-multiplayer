@@ -3,8 +3,11 @@
 > Warning: This game is Licensed under CC-BY-NC-SA. Use it appropriately
 > Read Licensing Information [here]()
 
+This is a Multiplayer Stock Simulator Game built using Flutter and Python. It aims to provide sole control to the host having following salient features:
+* Add stocks as per your requirement with **user-feeded stock names**
+* **Increase or decrease stock prices** at any instant of any stock of your choice
+* Being a **multiplayer game**, it relies on the players to be on the same local network as the host/server
 
-This is a Multiplayer Stock Simulator Game built using Flutter and Python
-| Flutter | Client |
-|---------|--------|
-| Python | Server |
+    | Flutter | Client |
+    |---------|--------|
+    | Python | Server |
