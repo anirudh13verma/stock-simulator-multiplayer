@@ -24,13 +24,15 @@ pip install requests
 
 ## Starting Server
 
-To start the game, first you need to start the server. In order to do that, find the server.py in the extracted zip location and run following command:
+To start the game, first you need to start the server. In order to do that, find the server.py in the extracted zip location and run following command or just double-click the file:
 ```bash
 python3 server.py
 ```
 It will start the server and it ask you how many stocks do you want in the game
-```
+```bash
 $ python3 server.py 
+```
+```
 Enter how many stocks you want: 4
 Enter Name of 1 stock: A
 Enter Name of 2 stock: B
