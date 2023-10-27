@@ -1,74 +1,46 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_client/StartPage.dart';
 import 'dart:io';
 
 import 'package:flutter_client/utils.dart';
 
-import 'StartPage.dart';
+class Stock {
+  final String name;
+  final int price;
+
+  Stock({required this.name, required this.price});
+}
 
 class MyClient extends StatefulWidget {
   final String ip;
 
   MyClient({required this.ip, Key? key}) : super(key: key);
-
   @override
-  _MyClientState createState() => _MyClientState();
+  _MyClientState createState() => _MyClientState(serverAddress: ip);
 }
 
 class _MyClientState extends State<MyClient> {
-  String serverAddress = ""; // Replace with the actual server IP address
+  final String serverAddress;
+
+  _MyClientState({required this.serverAddress});
+
   final serverPort = 12345;
   dynamic receivedData = '{}';
   bool isConnecting = false;
 
+  dynamic stockData;
+
+  List<Widget> stockItems = [];
+  Stock? selectedStock;
+
   Socket? socket;
 
-  @override
-  void initState() {
-    super.initState();
-    _connectToServer();
-  }
-
-  void _connectToServer() async {
-    try {
-      socket = await Socket.connect(serverAddress, serverPort);
-      socket!.listen(
-        (data) {
-          setState(() {
-            receivedData = String.fromCharCodes(data).trim();
-          });
-        },
-        onDone: () {
-          print('Connection closed by server.');
-          socket?.destroy();
-          setState(() {
-            receivedData = "Disconnected, Attempting to reconnect.";
-          });
-          // Automatically try to reconnect after a delay
-          Future.delayed(Duration(seconds: 2), () {
-            _connectToServer();
-          });
-        },
-        onError: (error) {
-          print('Error: $error');
-          // Automatically try to reconnect after a delay
-          Future.delayed(Duration(seconds: 2), () {
-            _connectToServer();
-          });
-        },
-      );
-
-      isConnecting = false;
-      setState(() {});
-    } catch (e) {
-      print('Error: $e');
-      // Automatically try to reconnect after a delay
-      Future.delayed(Duration(seconds: 2), () {
-        _connectToServer();
-      });
-    }
+  void _onStockTapped(Stock stock) {
+    setState(() {
+      selectedStock = stock;
+    });
   }
 
   @override
@@ -76,13 +48,83 @@ class _MyClientState extends State<MyClient> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-        f(int fs, Color clr, FontWeight fw) {
+    void _connectToServer() async {
+      try {
+        socket = await Socket.connect(serverAddress, serverPort);
+        socket!.listen(
+          (data) {
+            setState(() {
+              receivedData = String.fromCharCodes(data).trim();
+              stockData = jsonDecode(receivedData);
+
+              stockItems = stockData.entries.map<Widget>((entry) {
+                return GestureDetector(
+                  onTap: () {
+                    final stock = Stock(name: entry.key, price: entry.value);
+                    _onStockTapped(stock);
+                  },
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          entry.key,
+                          style: TextStyle(
+                            fontFamily: 'Raleway',
+                            fontSize: 22 / 768 * height,
+                            fontWeight: FontWeight.w600,
+                            color: fg,
+                          ),
+                        ),
+                        Text(
+                          '   ₹${entry.value}',
+                          style: TextStyle(
+                            fontFamily: 'Raleway',
+                            fontSize: 22 / 768 * height,
+                            fontWeight: FontWeight.w600,
+                            color: fg,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }).toList();
+            });
+          },
+          onDone: () {
+            print('Connection closed by server.');
+            socket?.destroy();
+            setState(() {
+              receivedData = "Disconnected, Attempting to reconnect.";
+            });
+            Future.delayed(const Duration(seconds: 2), () {
+              _connectToServer();
+            });
+          },
+          onError: (error) {
+            print('Error: $error');
+            Future.delayed(const Duration(seconds: 2), () {
+              _connectToServer();
+            });
+          },
+        );
+
+        isConnecting = false;
+        setState(() {});
+      } catch (e) {
+        print('Error: $e');
+        Future.delayed(const Duration(seconds: 2), () {
+          _connectToServer();
+        });
+      }
+    }
+
+    f(int fs, Color clr, FontWeight fw) {
       return SafeGoogleFont('Raleway',
           fontSize: fs / 768 * height, fontWeight: fw, color: clr);
     }
 
-
-    serverAddress = widget.ip;
     return Scaffold(
       body: Container(
         width: width,
@@ -91,51 +133,33 @@ class _MyClientState extends State<MyClient> {
         child: Center(
           child: Column(
             children: <Widget>[
-              Text(
+              const Text(
                 'Stock Market Simulator:',
-                style: f(42, fg, FontWeight.w800),
+                style: TextStyle(fontSize: 42.0, fontWeight: FontWeight.w800),
               ),
               Column(
-                children: [
-                  if (receivedData.isNotEmpty)
-                    ..._buildStockWidgets(f(22,fg,FontWeight.w600))
-                  else
-                    Text("No stock data available."),
-                ],
+                children: stockItems,
               ),
+              if (selectedStock != null)
+                Text(
+                  'Selected Stock: ${selectedStock!.name} - Price: ${selectedStock!.price}',
+                  style: const TextStyle(
+                      fontSize: 26.0, fontWeight: FontWeight.normal),
+                ),
               TextButton(
-                onPressed: () {
-                  socket?.close();
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  'Exit',
-                  style: f(34, fg, FontWeight.w600),
-                ))
+                  onPressed: () {
+                    socket?.close();
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'Exit',
+                    style: f(34, fg, FontWeight.w600),
+                  ))
             ],
           ),
         ),
       ),
     );
-  }
-
-  List<Widget> _buildStockWidgets(TextStyle st) {
-    try {
-      final stockData = jsonDecode(receivedData) as Map<String, dynamic>;
-      return stockData.entries.map((entry) {
-        return Container(
-          child: Row(
-            children: [
-              Text(entry.key, style: st,),
-              Text('  ₹${entry.value}', style: st),
-            ],
-          ),
-        );
-      }).toList();
-    } catch (e) {
-      print("Error decoding JSON: $e");
-      return [Text("Invalid JSON data.")];
-    }
   }
 
   @override
